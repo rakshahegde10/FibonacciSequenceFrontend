@@ -7,7 +7,7 @@ import ResultsPage from './components/ResultsPage';
 function App() {
 
 return (
-	<div>
+	<div className="app-container">
 		<Routes>
 			<Route exact path="/" element={<InputForm/>}/>
 			<Route exact path="/results" element={<ResultsPage/>}/>

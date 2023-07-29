@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import "./InputForm.css";
+
+const API_URL= 'http://localhost:5000/api/fibonacci/'
+
 
 const FormPage = () => {
 
@@ -22,7 +26,7 @@ const FormPage = () => {
           const isValidInteger = /^\d+$/.test(inputValue) && parseInt(inputValue) >= 0;;
 
           if (isValidInteger) {
-            const response = await axios.post('http://localhost:5000/api/fibonacci/', {
+            const response = await axios.post(`${API_URL}`, {
               inputNumber: parseInt(inputValue),
             });
             navigate('/results', { state: { message: response.data.fibonacciNumbers, num: parseInt(inputValue) } });
@@ -36,10 +40,10 @@ const FormPage = () => {
       };
 
     return (
-        <div>
+        <div className="form-container">
           <h1>Fibonacci Number Generator</h1>
           <form onSubmit={handleSubmit}>
-          <div>
+          <div className="form-group">
             <label>
               Enter a number:
             </label>
